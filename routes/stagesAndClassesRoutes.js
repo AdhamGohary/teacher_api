@@ -1,0 +1,11 @@
+const express = require("express");
+const router = express.Router();
+const stagesAndClassesController = require('../controllers/stagesAndClassesController');
+// const routes = require('E:/programs/node.js_projects/teacher_app_api/routes/routes');
+// routes.customRoute='stagesAndClassesRoutes';
+router.post("/stagesAndClassesRoutes/add",stagesAndClassesController.addClassAndGroup );
+router.get("/stagesAndClassesRoutes/get", stagesAndClassesController.getAllClassesAndGroups);
+router.get("/stagesAndClassesRoutes/:id", stagesAndClassesController.getCustomClassAndGroup);
+router.patch("/stagesAndClassesRoutes/:id", stagesAndClassesController.modifieyClassAndGroup);
+router.delete("/stagesAndClassesRoutes/:id", stagesAndClassesController.deleteCustomClassAndGroup);
+module.exports = router;
