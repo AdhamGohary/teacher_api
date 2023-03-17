@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const UserNameAndPaswwordController = require('E:/programs/node.js_projects/teacher_app_api/controllers/userNameAndPasswordController');
-// const routes = require('E:/programs/node.js_projects/teacher_app_api/routes/routes');
-// routes.customRoute='userNameAndPasswordRoutes';
 router.post("/userNameAndPasswordRoutes/add",UserNameAndPaswwordController.addUser );
 router.get("/userNameAndPasswordRoutes/get", UserNameAndPaswwordController.getUsers);
 router.get("/userNameAndPasswordRoutes/:id", UserNameAndPaswwordController.getCustomUser);

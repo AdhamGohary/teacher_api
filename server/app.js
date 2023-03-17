@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const userNameAndPasswordRoutes = require("../routes/userNameAndPasswordRoutes");
-const stagesAndClassesRoutes = require('../routes/stagesAndClassesRoutes');
-// const routes = require('E:/programs/node.js_projects/teacher_app_api/routes/routes');
+const routes = require("E:/programs/node.js_projects/teacher_app_api/routes/routes");
+//////////////////////////////////
 app.use(bodyParser.json());
-app.use("/teacherapp",/*routes*/stagesAndClassesRoutes /*userNameAndPasswordRoutes*/, (req, res, next) => {
-  console.log("from middle ware");
-  next();
-});
+app.use("/teacherapp", routes.userNameAndPasswordRoutes),
+app.use("/teacherapp", routes.stagesAndClassesRoutes),
+app.use("/teacherapp", routes.studentsRoutes,);
+app.use("/teacherapp", routes.homeworkScreenRoutes,);
+app.use("/teacherapp", routes.tableScreenRoutes,);
 
 mongoose
   .connect(
