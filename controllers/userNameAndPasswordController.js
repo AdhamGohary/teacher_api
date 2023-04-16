@@ -1,52 +1,64 @@
 const UserNameAndPaswwordModel = require("../models/userNameAndPaswwordModel");
 const addUser = async (req, res) => {
   const { userName, password } = req.body;
-  const userNameAndPaswword = await new UserNameAndPaswwordModel({
-    userName: userName,
-    password: password,
-  })
-    .save()
-    .catch((err) => console.log("ERROR IS" + err));
-  if (userNameAndPaswword) {
-    res.json(userNameAndPaswword);
-  }
-};
-// };
-const getUsers = async (req, res) => {
-  const userNameAndPaswword = await UserNameAndPaswwordModel.find().catch(
-    (err) => console.log("EROOR IS" + err)
-  );
-  if (userNameAndPaswword) res.json(userNameAndPaswword);
-};
-const getCustomUser = async (req, res) => {
-  const userNameAndPaswword = await UserNameAndPaswwordModel.findById(
-    req.params.id
-  ).catch((err) => console.log("ERROR IS" + err));
-  if (userNameAndPaswword) {
-    res.json(userNameAndPaswword);
-  }
-}; 
-const modifieyUser = async (req, res) => {
-  const { userName, password } = req.body;
-  const userNameAndPaswword = await UserNameAndPaswwordModel
-    .updateOne({
-      _id: req.params.id,
+  try {
+    const userNameAndPaswword = await new UserNameAndPaswwordModel({
       userName: userName,
       password: password,
-    })
-    .catch((err) => console.log("ERROR IS" + err));
-  if (userNameAndPaswword) {
-    res.json(userNameAndPaswword);
+    }).save();
+
+    if (userNameAndPaswword) {
+      res.json(userNameAndPaswword);
+    }
+  } catch (error) {
+    console.log("ERROR IS" + error);
+  }
+};
+const getUsers = async (req, res) => {
+  try {
+    const userNameAndPaswword = await UserNameAndPaswwordModel.find();
+    if (userNameAndPaswword) res.json(userNameAndPaswword);
+  } catch (error) {
+    console.log("ERROR IS" + error);
+  }
+};
+const getCustomUser = async (req, res) => {
+  try {
+    const userNameAndPaswword = await UserNameAndPaswwordModel.findById(
+      req.params.id
+    );
+    if (userNameAndPaswword) {
+      res.json(userNameAndPaswword);
+    }
+  } catch (error) {
+    console.log("ERROR IS" + error);
+  }
+};
+const modifieyUser = async (req, res) => {
+  const { userName, password } = req.body;
+  try {
+    const userNameAndPaswword = await UserNameAndPaswwordModel.updateOne({
+      _id: req.params.id},
+      {userName: userName,
+      password: password,
+    });
+    if (userNameAndPaswword) {
+      res.json(userNameAndPaswword);
+    }
+  } catch (error) {
+    console.log("ERROR IS" + error);
   }
 };
 const deleteCustomUser = async (req, res) => {
-  const userNameAndPaswword = await UserNameAndPaswwordModel
-    .deleteOne({
+  try {
+    const userNameAndPaswword = await UserNameAndPaswwordModel.deleteOne({
       _id: req.params.id,
-    })
-    .catch((err) => console.log("ERROR IS" + err));
-  if (userNameAndPaswword) {
-    res.json(userNameAndPaswword);
+    });
+    if (userNameAndPaswword) {
+      res.json(userNameAndPaswword);
+    }
+  } catch (error) {
+    console.log("ERROR IS" + error);
   }
 };
 module.exports = {
@@ -54,5 +66,5 @@ module.exports = {
   getUsers,
   getCustomUser,
   modifieyUser,
-  deleteCustomUser
+  deleteCustomUser,
 };

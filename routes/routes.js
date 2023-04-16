@@ -1,12 +1,16 @@
 const userNameAndPasswordRoutes = require("../routes/userNameAndPasswordRoutes");
-const stagesAndClassesRoutes = require("../routes/stagesAndClassesRoutes");
+const addHomeworkRoutes = require("./addHomeworkRoutes");
 const studentsRoutes = require("../routes/studentsRoutes");
 const homeworkScreenRoutes = require('../routes/homeworkScreenRoutes');
 const tableScreenRoutes = require('../routes/tableScreenRoutes');
+const chatScreenRoutes = require('../routes/chatScreenRoutes');
+const titleAndDetailsOfHomeworkRoutes = require('../routes/titleAndDetailsOfHomeworkRoutes');
 module.exports = {
   userNameAndPasswordRoutes,
-  stagesAndClassesRoutes,
+  addHomeworkRoutes,
   studentsRoutes,
   homeworkScreenRoutes,
-  tableScreenRoutes
+  tableScreenRoutes,
+  chatScreenRoutes,
+  titleAndDetailsOfHomeworkRoutes
 };

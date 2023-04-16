@@ -9,6 +9,7 @@ const userNameAndPaswwordModel = mongoose.Schema({
     type: String,
     required: true,
   },
+  
  
 },
 {
